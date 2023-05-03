@@ -2,6 +2,7 @@
 	<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" type="text/css" href="css/notion.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
 	<title>김세영 ESSENTIAL</title>
 	</head>
 <body>
@@ -11,25 +12,86 @@
 		github</a>
 	 /nav 
 -->
-<main class="page sans">
-<header><h1 class="page-title"> <span class="page-header-icon">🎮</span>김세영 ESSENTIAL</h1></header>
 
+<main class="page">
+<header><h1 class="page-title"> <span class="page-header-icon">🎮</span>김세영 ESSENTIAL</h1></header>
 <div class="page-body">
+	<p>함께하는 주니어 개발자 김세영입니다.</p>
 	<p><span class="icon">📧</span> dearseng@gmail.com</p>
 	<p><span class="icon">📞</span> 010-6380-9098</p>
 	<div class="column-list">
-		<div style="width:50%" class="column"><h3 class="block-color-yellow_background">EDUCATION</h3>
-			<ul class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">2022.08.29 ~ 2023.03.22 @ 쌍용강북교육센터</mark><br>AWS 클라우드를 활용한 Full-Stack 개발자 양성과정 (Java 기반 풀스택 프로그래밍 과정) 이수</li></ul>
-			<ul class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">2016.03~2018.09 @삼육대학교</mark><br>경영학 학사 학위 취득</li></ul>
+		<div style="width:50%;" class="column orangerange"><h3 class="block-color-yellow_background">📜 TIMELINE</h3>
+			<div style="text-align: center;"><input id="mytimeline" type="range" min="16" max="26" value="23" style="width:90%;"><br><label for="mytimeline">범위를 조절해보세요!</label></div>
+			<ul class="bulleted-list wideli">
+				<li style="list-style-type:disc"><mark class="highlight-gray">2022.08.29 ~ 2023.03.22 @ 쌍용강북교육센터</mark><br>AWS 클라우드를 활용한 Full-Stack 개발자 양성과정<br>(Java 기반 풀스택 프로그래밍 과정) 이수</li>
+				<li style="list-style-type:disc"><mark class="highlight-gray">2020.01~2022.04 @주식회사디제이트란스</mark><br>경영지원팀 재무회계 업무</li>
+				<li style="list-style-type:disc"><mark class="highlight-gray">2016.03~2018.09 @삼육대학교</mark><br>경영학 학사 학위 취득</li>
+			</ul>
 		</div>
+
 		<div style="width:50%" class="column">
-			<h3 class="block-color-yellow_background">SKILLS</h3>
-			<p></p>
+			<h3 class="block-color-yellow_background">📚 SKILLS</h3>
+			<ul class="bulleted-list">
+				<li style="list-style-type:disc">JAVA</li>
+				<li style="list-style-type:disc">Spring Framework</li>
+				<li style="list-style-type:disc">MyBatis</li>
+				<li style="list-style-type:disc">Oracle Database</li>
+			</ul>
+			<ul class="bulleted-list">
+				<li style="list-style-type:disc">JavaScrpt</li>
+				<li style="list-style-type:disc">JQuery</li>
+				<li style="list-style-type:disc">HTML</li>
+				<li style="list-style-type:disc">CSS</li>
+				<li style="list-style-type:disc">JSP</li>
+			</ul>
+			<ul class="bulleted-list">
+				<li style="list-style-type:disc">Git</li>
+				<li style="list-style-type:disc">Notion</li>
+			</ul>
 		</div>
 	</div>
-	<h3 class="block-color-yellow_background">PROJECT</h3>
-	<figure class="block-color-default link-to-page"><a href="ferp.html">FERP : ERP For Franchase</a></figure>
+	<h3 class="block-color-yellow_background">💖 PROJECT</h3>
+	<p class="block-color-default link-to-page"><a href="ferp.html">🔗 FERP : ERP For Franchase</a></p>
 	</div>
 </main>
 </body>
+<script>
+	var mytimeline=document.querySelector("#mytimeline")
+	const yearli = document.querySelectorAll(".wideli li");
+
+	mytimeline.addEventListener("input",function(){
+		let mytimelinevalue=mytimeline.value
+		fillOrange(mytimelinevalue);
+		yearli.forEach(function(each){
+			each.style.background="transparent";
+			each.style.fontWeight="normal";
+		})
+		if(mytimelinevalue<19){
+			yearli[2].style.background="#fff8e3";
+			yearli[2].style.fontWeight="bold";
+			console.log("19년 이전")
+		}else if(mytimelinevalue<23){
+			yearli[1].style.background="#fff8e3";
+			yearli[1].style.fontWeight="bold";
+		}else{
+			yearli[0].style.background="#fff8e3";
+			yearli[0].style.fontWeight="bold";
+		}
+	})
+
+function fillOrange(timeyearvalue){
+	let gradient_value=(timeyearvalue-16)/10*100;
+	switch(gradient_value){
+		case 10: gradient_value = 11; break;
+		case 20: gradient_value = 21; break;
+		case 90 : gradient_value = 88; break;
+	}
+	mytimeline.style.background = 'linear-gradient(to right, #fede7c 0%, #fede7c '+gradient_value +'%, #989898 ' +gradient_value+ '%,#989898 100%)';
+}
+
+</script>
+
+<script>
+	twemoji.parse(document.body)
+</script>
 </html>
