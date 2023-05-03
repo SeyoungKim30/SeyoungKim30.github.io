@@ -25,11 +25,22 @@
 			<ul class="bulleted-list wideli">
 				<li style="list-style-type:disc"><mark class="highlight-gray">2022.08.29 ~ 2023.03.22 @ 쌍용강북교육센터</mark>
 					<br>AWS 클라우드를 활용한 Full-Stack 개발자 양성과정
-					<br>(Java 기반 풀스택 프로그래밍 과정) 이수
-					<br><a href="https://cerulean-plastic-e02.notion.site/234400b2c8ab4c969e257973b40cfe71">What I've learned</a>
+					<div class="canbehidden">Java 기반 풀스택 프로그래밍 과정 이수<br><a href="https://cerulean-plastic-e02.notion.site/234400b2c8ab4c969e257973b40cfe71">🔗 What I've learned</a></div>
 				</li>
-				<li style="list-style-type:disc"><mark class="highlight-gray">2020.01~2022.04 @주식회사디제이트란스</mark><br>경영지원팀 재무회계 업무</li>
-				<li style="list-style-type:disc"><mark class="highlight-gray">2016.03~2018.09 @삼육대학교</mark><br>경영학 학사 학위 취득</li>
+				<li style="list-style-type:disc">
+					<mark class="highlight-gray">2019.05~2022.04</mark>
+					<br>재무회계 업무
+					<div class="canbehidden">자금관리, 세무 신고, 손익계산서 작성 등의 재무회계 업무와 인사업무 일부를 수행했습니다. Forwarding 기업용 ERP를 사용했습니다.</div>
+				</li>
+				<li style="list-style-type:disc">
+					<mark class="highlight-gray">2018.09~2018.10</mark>
+					<br>전산세무회계자격증취득과정
+					<div class="canbehidden">회계 관련 DB마스터 관리, 회계프로그램 운용, 회계정보를 활용하는 능력을 함양</div>
+				</li>
+				<li style="list-style-type:disc">
+					<mark class="highlight-gray">2016.03~2018.09 @삼육대학교</mark>
+					<br>경영학 학사 학위 취득
+				</li>
 			</ul>
 		</div>
 
@@ -55,13 +66,14 @@
 		</div>
 	</div>
 	<h3 class="block-color-yellow_background">💖 PROJECT</h3>
-	<p class="block-color-default link-to-page"><a href="ferp.html">🔗 FERP : ERP For Franchase</a></p>
+	<p class="block-color-default link-to-page"><a href="ferp.html">🔄 FERP : ERP For Franchase</a></p>
 	</div>
 </main>
 </body>
 <script>
 	var mytimeline=document.querySelector("#mytimeline")
 	const yearli = document.querySelectorAll(".wideli li");
+	const canbehidden = document.querySelectorAll(".canbehidden");
 
 	mytimeline.addEventListener("input",function(){
 		let mytimelinevalue=mytimeline.value
@@ -70,16 +82,28 @@
 			each.style.background="transparent";
 			each.style.fontWeight="normal";
 		})
+		canbehidden.forEach(function(each){
+			each.style.display="none";
+		})
+
 		if(mytimelinevalue<19){
+			yearli[3].style.background="#fff8e3";
+			yearli[3].style.fontWeight="bold";
+		}else if(mytimelinevalue<20){
 			yearli[2].style.background="#fff8e3";
 			yearli[2].style.fontWeight="bold";
-			console.log("19년 이전")
+			canbehidden[2].style.display="block";
+			canbehidden[2].style.fontWeight="normal";
 		}else if(mytimelinevalue<23){
 			yearli[1].style.background="#fff8e3";
 			yearli[1].style.fontWeight="bold";
+			canbehidden[1].style.display="block";
+			canbehidden[1].style.fontWeight="normal";
 		}else{
 			yearli[0].style.background="#fff8e3";
 			yearli[0].style.fontWeight="bold";
+			canbehidden[0].style.display="block";
+			canbehidden[0].style.fontWeight="normal";
 		}
 	})
 
@@ -93,6 +117,15 @@ function fillOrange(timeyearvalue){
 	mytimeline.style.background = 'linear-gradient(to right, #fede7c 0%, #fede7c '+gradient_value +'%, #989898 ' +gradient_value+ '%,#989898 100%)';
 }
 
+window.addEventListener("load", (event) => {
+	canbehidden.forEach(function(each){
+			each.style.display="none";
+		})
+	yearli[0].style.background="#fff8e3";
+	yearli[0].style.fontWeight="bold";
+	canbehidden[0].style.display="block";
+	canbehidden[0].style.fontWeight="normal";
+});
 </script>
 
 <script>
