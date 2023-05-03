@@ -1,1 +1,679 @@
-<h1>FERP 프로젝트</h1>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>FERP : ERP For Franchase</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8312538d-11e8-4f00-b88f-f5a12a65aa53" class="page sans"><header><img class="page-cover-image" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/F.ERP.png" style="object-position:center 50%"/><h1 class="page-title">FERP : ERP For Franchase</h1></header><div class="page-body"><ul id="427443c1-05de-4906-bc52-f691b9bf96ab" class="block-color-gray_background toggle"><li><details open=""><summary><strong>목차</strong></summary><nav id="2131082d-3064-4bf0-acfa-0310ff2b41f7" class="block-color-gray_background table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8d355299-acd8-4f0a-a4a6-8f31b48a99c9">📢진행개요</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d02f6222-ddd9-4a1a-a8b8-dcfe8b36f68d"><strong>📠</strong>FERP 설명</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e8955820-2c20-441b-ae3e-a2315657c416">🔧SKILLS &amp; TOOLS</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b6f266d7-e309-4493-800b-d7d98f8bdf40">Language</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b70e0b61-93c9-4343-823f-ab741cfac8c5">DB &amp; Server</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ed22dbde-eb45-4158-b5a8-9a848bfe76d7">Tools</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#617769c1-44d6-422c-ab9b-7a2b325b7943">Framework</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#363eba1d-e2b7-4355-a743-9f67adb09199"><strong>API &amp; Library</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7b6478de-53e1-44fb-ac84-bfb9cc444ad5">🎛️ERD</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#800ab049-d039-4867-879d-dd23c0d2dbe6">담당기능</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#611671bb-ea81-4abf-9d31-960160f3f58e">🪙 계정과목</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dced1c2c-6d5b-4b93-b219-ee06d42fd2b5">🪙 전표 수동입력</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ba17adc-5eb7-45e4-bc5a-468fbdac93f4">🪙 거래내역 조회</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3597e8e2-1d9a-471a-8fe8-bb60ba8714df">🚚 발주 조회</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1fd55a97-378f-45ef-8e2c-f3b814145144">🚚 발주 정산</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9d2b6f09-4f78-40b1-a7f4-683ef077e46b">🚚 정산서 조회</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f90876c0-6581-47ad-a4da-c70580124f49">🚚 불량 신청 관리</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4fab8356-ffca-4d28-8f3d-737ecf907459">🔓임시 비밀번호 발급</a></div></nav></details></li></ul><h2 id="8d355299-acd8-4f0a-a4a6-8f31b48a99c9" class="block-color-gray_background">📢진행개요</h2><div id="a5f120ed-7c80-4e24-92fd-0c1c872524c1" class="column-list"><div id="b464d266-9042-4d3a-bb03-4869f8eea68b" style="width:18.75%" class="column"><ul id="256b45b4-a5d3-466a-9402-5e7cefa56203" class="bulleted-list"><li style="list-style-type:disc">프로젝트 </li></ul><ul id="656c6b99-67f3-472f-9dd7-22a8cb07c628" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">진행기간</mark></li></ul><ul id="e254121d-1b13-4a0c-b34d-0c31c793dc1a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">Link</mark></li></ul><ul id="781ee61d-259f-4475-b75f-8e78c8ddfaf1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-gray">담당기능</mark></li></ul></div><div id="3e6a8f9f-ba83-4de9-baa4-0b2bfc89a91f" style="width:81.25%" class="column"><p id="c1cfbd13-4536-43b8-b0c6-61813c8dc53a" class=""><strong>키오스크를 사용하는 요식업 프랜차이즈 브랜드 운영을 위한 ERP</strong></p><p id="8418dede-fee8-4b30-952c-b0243771774a" class="">2023.02.10 ~ 2023.03.18</p><p id="7e136f43-3082-41bd-b76f-691cd164761b" class=""><strong><a href="https://github.com/SeyoungKim30/ferp">github</a></strong><strong> , </strong><strong><a href="https://docs.google.com/presentation/d/1QgWJXD3qTaJ8oK8Hi2Ts7uBWjJ3C1YN3o3Kxp_wDb-s/edit?usp=sharing">프로젝트 발표자료</a></strong></p><p id="b61ac2f7-8292-4e9b-8b29-c5025495e3a5" class="">재무관리, 물류-발주 관리, 권한에 따른 접근제한</p></div></div><h2 id="d02f6222-ddd9-4a1a-a8b8-dcfe8b36f68d" class="block-color-gray_background"><strong>📠</strong>FERP 설명</h2><figure id="76bc7718-8f8c-4cee-b222-dd4e1a309a30" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled.png"><img style="width:1196px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled.png"/></a></figure><p id="09b637f4-41b7-4b10-b6bd-6554745bc241" class="">《FERP》는 기업에서 필요한 여러가지 정보처리 기능들을 공통 데이터베이스로 관리하는 ERP를 외식산업계에 빠르게 확산되고 있는 ‘키오스크’에 접목시키기 위한 프로젝트입니다.</p><figure id="fb56899a-7e4a-43f0-9cc4-4243ea4d532a" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%201.png"><img style="width:1196px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%201.png"/></a></figure><p id="d4dbc973-8bc1-4cc9-8154-28f0f924768f" class="">《FERP》는 ERP의 구성 중에서도 인사, 물류, 분석, 재무에 집중합니다. 고객이 키오스크를 통해 주문하는 순간부터 매장의 운영, 본사에서의 관리까지 하나의 통합된 시스템 안에서 이루어지는 서비스를 제공합니다. </p><figure id="67ca2a16-2eea-426e-b8e6-da08aa3896b4" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%202.png"><img style="width:1196px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%202.png"/></a></figure><p id="bd491dd5-8903-4385-a570-62c57168f7df" class="">고객은 손쉬운 키오스크 사용을 경험하고 본사에선 실시간으로 매장에 대한 정보 확인 및 체계화된 매장 관리가 가능해집니다. 매장에선 프랜차이즈 환경에 최적화된 재고관리 및 발주 서비스를 이용할 수 있고 매장 관리에 필요한 매출분석, 인사, 회계 등의 기능을 제공받습니다.</p><h2 id="e8955820-2c20-441b-ae3e-a2315657c416" class="block-color-gray_background">🔧SKILLS &amp; TOOLS</h2><div id="6c9125f8-c8ff-4015-b6b8-270688051484" class="column-list"><div id="63e91e23-b468-4024-b1bc-d92a1fcab271" style="width:33.333333333333336%" class="column"><h3 id="b6f266d7-e309-4493-800b-d7d98f8bdf40" class="">Language</h3><ul id="06826928-6cb4-4247-a243-42f4d8e449da" class="bulleted-list"><li style="list-style-type:disc">JAVA 15.0</li></ul><ul id="5cb1f86c-47be-4b26-9a13-d414dff32710" class="bulleted-list"><li style="list-style-type:disc">JSP 2.3</li></ul><ul id="9dac02fa-e071-42a5-aa57-0eebba914675" class="bulleted-list"><li style="list-style-type:disc">HTML 5</li></ul><ul id="802f66d5-85f2-4b0c-85c0-b088c4e1382a" class="bulleted-list"><li style="list-style-type:disc">CSS 3</li></ul><ul id="1854ae47-58ab-457d-9b29-d1d95a5f6498" class="bulleted-list"><li style="list-style-type:disc">JavaScript 1.7</li></ul></div><div id="6ecde87b-0515-4659-b649-d08df5461928" style="width:33.333333333333336%" class="column"><h3 id="b70e0b61-93c9-4343-823f-ab741cfac8c5" class="">DB &amp; Server</h3><ul id="9a671939-df4e-4ea0-a6c5-af831176935d" class="bulleted-list"><li style="list-style-type:disc">ORACLE 11g</li></ul><ul id="f6b74734-a636-4fd2-a2d5-1388a7cac294" class="bulleted-list"><li style="list-style-type:disc">APACHETOMCAT 9.0</li></ul></div><div id="39561ff6-4c2a-4e69-94b4-222276d9a28a" style="width:33.33333333333333%" class="column"><h3 id="ed22dbde-eb45-4158-b5a8-9a848bfe76d7" class="">Tools</h3><ul id="cad32fec-abe7-4219-8ec5-61af9c223482" class="bulleted-list"><li style="list-style-type:disc">Eclipse 2022-12</li></ul><ul id="956f9289-3a92-499e-86ec-94414157f258" class="bulleted-list"><li style="list-style-type:disc">DBEAVER 23.0.0</li></ul><ul id="b9e929e7-d719-4def-b61f-af8525728962" class="bulleted-list"><li style="list-style-type:disc">Git</li></ul><ul id="02d5536f-abcc-4ebe-bab5-f56b101831e0" class="bulleted-list"><li style="list-style-type:disc">ERD Cloud</li></ul><ul id="5c0d1a81-2b44-4529-9ae2-205796bf6d7a" class="bulleted-list"><li style="list-style-type:disc">Notion</li></ul></div></div><h3 id="617769c1-44d6-422c-ab9b-7a2b325b7943" class="">Framework</h3><ul id="f0c3edd1-0d0c-4047-9fc0-998eb2c02660" class="toggle"><li><details open=""><summary>SPRING</summary><figure id="61562ea4-52bd-4158-9073-f873db957695" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.14.07.png"><img style="width:672px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.14.07.png"/></a></figure><p id="92adfff1-0f5d-4691-aaa6-0833c53ae1fc" class="">Spring은 Java 기반의 웹 프레임워크로, Model-View-Controller(MVC) 아키텍처를 제공하여 웹 애플리케이션을 구축할 수 있게 합니다. 이는 대규모의 엔터프라이즈 자바 개발에 대한 포괄적인 기능을 제공하는 Spring Framework의 일부입니다.
+Spring MVC는 개발자가 애플리케이션의 비즈니스 로직, 프레젠테이션 로직 및 사용자 인터페이스를 분리하여 코드를 유지, 테스트 및 수정하기 쉽게 만듭니다. 이 프레임워크는 컨트롤러를 사용하여 들어오는 요청을 처리하고, 모델을 사용하여 애플리케이션의 데이터를 표현하며, 뷰를 사용하여 클라이언트에게 응답을 렌더링합니다.</p></details></li></ul><ul id="395f8a58-741c-41ef-b0af-b1cd0dbe68ed" class="toggle"><li><details open=""><summary>myBatis</summary><figure id="a1093798-dfc4-49b6-ab8d-dcb7db659de9" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.18.38.png"><img style="width:132px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.18.38.png"/></a></figure><figure id="efa58338-c505-40aa-856f-d576f102f3e3" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.14.35.png"><img style="width:672px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.14.35.png"/></a></figure><p id="29778861-d6b0-4d88-8b2a-9deabc5fc866" class="">MyBatis는 자바 기반의 오픈 소스 ORM 프레임워크로, 데이터베이스와 자바 객체 간의 매핑을 지원합니다. MyBatis는 SQL 쿼리를 XML 파일이나 애노테이션을 이용해 작성하고, 이를 자바 객체와 연결하여 데이터베이스에서 데이터를 조회하거나 수정하는 작업을 쉽게 처리할 수 있도록 도와줍니다.</p></details></li></ul><h3 id="363eba1d-e2b7-4355-a743-9f67adb09199" class=""><strong>API &amp; Library</strong></h3><ul id="d35330b7-6be8-4f8f-9b11-78044295eb57" class="toggle"><li><details open=""><summary>AJAX</summary><figure id="0dd98a95-dde3-4e69-893d-2c0e244ab3af" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.30.02.png"><img style="width:672px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-04-14_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.30.02.png"/></a></figure><p id="5ca94503-8cf1-4afe-9b8a-874441ce54de" class="">AJAX는 Asynchronous JavaScript and XML의 약어로, 비동기적으로 서버와 브라우저 간에 데이터를 주고받을 수 있는 기술입니다.
+AJAX는 JavaScript를 이용하여 서버에 요청을 보내고, 서버에서는 해당 요청에 대한 응답을 XML, JSON, HTML 등의 형식으로 반환합니다. 이후 JavaScript를 이용하여 해당 데이터를 가공하고 웹 페이지에 동적으로 표시합니다.</p></details></li></ul><ul id="420bae3a-7631-4e3a-8fe2-4a48a032fce6" class="toggle"><li><details open=""><summary>fetch</summary><figure id="97dce5da-15d4-4f98-9c19-04ce1f1629e7" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%203.png"><img style="width:1000px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%203.png"/></a></figure><p id="1c668a6f-e429-489d-9905-30347c447f40" class="">JavaScript 내장 라이브러리 입니다. 비동기 데이터전송 방식으로 서버로부터 데이터를 가져오기 위해 사용합니다. Promise 기반이기 때문에 response가 HTTP error status 여도 반환된 Promise 객체로부터 Response를 수신할 수 있다는 특징이 있습니다. </p></details></li></ul><ul id="303ef0f5-7585-4c11-8ad4-d465f17d3489" class="toggle"><li><details open=""><summary>J-query 3.6.0</summary><p id="b1c82720-4614-4585-b357-e890a9d08f7e" class="">jQuery는 HTML 문서를 조작하고, 이벤트 처리 및 애니메이션 효과 등을 쉽게 구현할 수 있는 크로스 플랫폼 자바스크립트 라이브러리입니다.
+jQuery는 선택자를 이용하여 HTML 요소를 선택하고, 선택한 요소를 쉽게 조작할 수 있도록 다양한 메서드와 기능을 제공합니다. </p></details></li></ul><h2 id="7b6478de-53e1-44fb-ac84-bfb9cc444ad5" class="block-color-gray_background">🎛️ERD</h2><figure id="4a553a0b-07c8-4a9f-9185-1b23b0677305" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/erd.png"><img style="width:1948px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/erd.png"/></a></figure><hr id="db24805f-47a3-4867-a626-078813633b20"/><h1 id="800ab049-d039-4867-879d-dd23c0d2dbe6" class="">담당기능</h1><h3 id="611671bb-ea81-4abf-9d31-960160f3f58e" class="block-color-orange_background">🪙 계정과목</h3><figure id="23707c18-85e0-47be-a40b-3bf5e99cc267" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%204.png"><img style="width:480px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%204.png"/></a></figure><ul id="4cfca144-165d-4c1c-8e31-c5bfc76657a7" class="bulleted-list"><li style="list-style-type:disc">등록된 계정 검색</li></ul><ul id="c0341d33-3ba6-4c5a-8ed9-acaef6b75475" class="bulleted-list"><li style="list-style-type:disc">새 계정 등록 : 이미 존재하는 계정코드 입력시 등록 불가능</li></ul><ul id="babcfb8b-5e2c-49a0-87d4-3103f5f37339" class="bulleted-list"><li style="list-style-type:disc">사용여부 변경</li></ul><h3 id="dced1c2c-6d5b-4b93-b219-ee06d42fd2b5" class="block-color-orange_background">🪙 전표 수동입력</h3><figure id="0bf59505-a820-4b3f-94d2-f049a140ee0c" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%205.png"><img style="width:432px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%205.png"/></a></figure><ul id="8ae69aa0-b1ef-4361-9b51-50e4a7eef3cd" class="bulleted-list"><li style="list-style-type:disc">전표일자와 전표번호를 입력해서 검색
+(일자만 입력시 해당일 마지막 전표 검색)</li></ul><ul id="fe397750-e339-42fc-a30c-b8e2dec2587f" class="bulleted-list"><li style="list-style-type:disc">현재 전표의 이전,다음전표가 있을 시 버튼 표시</li></ul><ul id="f8ea3b30-931e-4f6a-8c87-1617c1f1609d" class="bulleted-list"><li style="list-style-type:disc">계정코드 입력 시 계정명 출력</li></ul><ul id="8c1f4347-04fc-4b83-a3a2-3bc2d2dd0e40" class="bulleted-list"><li style="list-style-type:disc">2행 미만으로 행 삭제 불가능</li></ul><p id="3a2887af-62fe-48c1-9e81-5243a4c27f46" class="">
+</p><h3 id="6ba17adc-5eb7-45e4-bc5a-468fbdac93f4" class="block-color-orange_background">🪙 거래내역 조회</h3><figure id="4e839af9-cb6f-46aa-b840-4cff2a6b9732" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%206.png"><img style="width:432px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%206.png"/></a></figure><ul id="05b1c24a-330f-4991-9e51-a952d448e10c" class="bulleted-list"><li style="list-style-type:disc">일자별 조회 : 일자별로 등록된 전표의 계정과목별 합계금액 출력</li></ul><ul id="2ec55368-f9b8-4c80-98a0-02041c45fb76" class="bulleted-list"><li style="list-style-type:disc">건별 조회 : 전표별로 결과 출력</li></ul><p id="c9e7e67c-779f-4e55-942b-088abee0cac0" class="">
+</p><h3 id="3597e8e2-1d9a-471a-8fe8-bb60ba8714df" class="block-color-orange_background">🚚 발주 조회</h3><div id="cbfef9f3-a1ae-4642-9af2-c17ceda65b60" class="column-list"><div id="1bb5ba16-96d7-46e7-9525-54e985584602" style="width:50%" class="column"><figure id="975b318a-7b42-47f1-a187-0f44fb85f869" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%207.png"><img style="width:1494px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%207.png"/></a></figure></div><div id="b1ea4ae4-b5cd-4e0b-ae87-efa32fcb2a4b" style="width:50%" class="column"><figure id="cdaadab7-379e-4d1a-a2ca-4c4aa8969cd4" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%208.png"><img style="width:586px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%208.png"/></a></figure></div></div><ul id="39060452-d662-40af-80d0-23bfeff30637" class="bulleted-list"><li style="list-style-type:disc">검색할 조회기간을 선택하면 나머지는 비활성화</li></ul><ul id="8b8526b0-2b6f-40c6-b130-86f353b3687c" class="bulleted-list"><li style="list-style-type:disc">일자별 조회시 상품별 수량 조회· 상태 일괄 변경 가능</li></ul><p id="156afb2d-f781-40c8-b818-cee0664afcee" class="">
+</p><h3 id="1fd55a97-378f-45ef-8e2c-f3b814145144" class="block-color-orange_background">🚚 발주 정산</h3><figure id="1f9b1ceb-e848-416b-bc5f-c331db432a72" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%209.png"><img style="width:1502px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%209.png"/></a></figure><ul id="0993ef6d-5edc-412e-a9a6-975158e03ee6" class="bulleted-list"><li style="list-style-type:disc">정산 상태 변경시 자동으로 전표 생성</li></ul><ul id="ff225d5b-d34e-4a7a-b301-7c93fee35236" class="bulleted-list"><li style="list-style-type:disc">검색기간 종료월 기준으로 결제상태 일괄변경</li></ul><p id="3e40a417-9708-4ff3-b52e-23c6ecca57aa" class="">
+</p><h3 id="9d2b6f09-4f78-40b1-a7f4-683ef077e46b" class="block-color-orange_background">🚚 정산서 조회</h3><figure id="a3f1c7e1-34bc-4eed-926e-bfa6208c7848" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2010.png"><img style="width:1420px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2010.png"/></a></figure><ul id="7cdde6be-305d-428e-9c52-8949dbedf803" class="bulleted-list"><li style="list-style-type:disc">품목 구분에 따라 부가세액 자동 계산</li></ul><ul id="1eab5df9-6c03-48ed-b51b-ac623f8e25c1" class="bulleted-list"><li style="list-style-type:disc">정산서 본문 인쇄</li></ul><p id="47b90257-f827-441c-a9c4-6663d9af8402" class="">
+</p><h3 id="f90876c0-6581-47ad-a4da-c70580124f49" class="block-color-orange_background">🚚 불량 신청 관리</h3><div id="23a0fb16-97cd-478a-83bf-a04412297862" class="column-list"><div id="dbff0faa-e701-465c-bc60-fb9c1dcb7e3a" style="width:56.25%" class="column"><figure id="f952b840-1eb4-4035-b372-bad970d83bfa" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2011.png"><img style="width:1020px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2011.png"/></a></figure></div><div id="0a8943ac-0c69-408f-9c5a-06842cc580cd" style="width:43.75000000000003%" class="column"><figure id="95696cc7-98f7-4597-b57e-850d45524b14" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2012.png"><img style="width:672px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2012.png"/></a></figure></div></div><ul id="bd4a7ca2-a748-4f12-a61e-b0d4901380b5" class="bulleted-list"><li style="list-style-type:disc">변경을 누르면 [불량신청건 처리]의 내용이 변경되서 노출</li></ul><ul id="0b45845f-6a1c-40b7-9244-86f9bf00bcfd" class="bulleted-list"><li style="list-style-type:disc">조정항목 : 체크를 해제하면 disabled. 기본은 required</li></ul><p id="bfefb07d-c10d-441e-bda5-88f27ce976fa" class="">
+</p><h3 id="4fab8356-ffca-4d28-8f3d-737ecf907459" class="block-color-orange_background">🔓임시 비밀번호 발급</h3><figure id="91eef474-8ebe-4bcc-b354-bcc78d9862f9" class="image"><a href="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2013.png"><img style="width:904px" src="FERP%20ERP%20For%20Franchase%208312538d11e84f00b88ff5a12a65aa53/Untitled%2013.png"/></a></figure><ul id="fcb63e59-2a5d-4fce-8cea-5f44dd6fbc75" class="bulleted-list"><li style="list-style-type:disc">일치하는 정보가 있을때, 랜덤생성된 임시비밀번호 메일 발송</li></ul></div></article></body></html>
