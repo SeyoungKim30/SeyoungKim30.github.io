@@ -48,6 +48,14 @@ li{padding-bottom: 0.2em;}
     font-size: 0.8rem;
 }
 
+.orangeCapsule{
+    background-color: #ffe599;
+    border-radius: 1rem;
+    padding-left: 0.5em;
+    padding-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
   img.emoji {
     height: 1em;
     width: 1em;
