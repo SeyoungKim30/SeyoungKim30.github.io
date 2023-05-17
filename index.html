@@ -16,33 +16,50 @@
 <main class="page">
 <header><h1 class="page-title"> <span class="page-header-icon">🎮</span>김세영 ESSENTIAL</h1></header>
 <div class="page-body">
-	<p>함께하는 주니어 개발자 김세영입니다.</p>
+	<p>함께하는 주니어 웹개발자 김세영입니다.</p>
 	<p><span class="icon">📧</span> dearseng@gmail.com</p>
 	<p><span class="icon">📞</span> 010-6380-9098</p>
-	<p><span class="icon">✅</span>JAVA SpringFramework 기반 Full-Stack 웹개발</p>
-	<p><span class="icon">✅</span>Git을 통한 Version Control & Collaboration </p>
-	<p><span class="icon">✅</span>A Team Player & Fast Learner</p>
+	<hr>
+	<p>
+		<h4><span class="icon">✅</span>JAVA SpringFramework 기반 Full-Stack 웹개발</h4>
+		MVC패턴을 적용해 웹 애플리케이션을 개발합니다.
+	</p>
+	<p>
+		<h4><span class="icon">✅</span>Git을 통한 Version Control & Collaboration</h4> 
+		Commit 버전에 따른 소스코드 관리가 가능합니다.<br>협업시 access를 부여하고 branch를 사용해서 작업을 진행합니다.
+	</p>
+	<p>
+		<h4><span class="icon">✅</span>A Team Player & Communicator</h4>
+		공통의 목표를 함께 달성하도록 노력합니다.<br>
+		평가를 주고받으며 성장하는 것을 좋아합니다.
+	</p>
+
+	<div>
+		<h3 class="block-color-yellow_background">💖 PROJECT</h3>
+		<p class="block-color-default link-to-page"><a href="ferp.html">🔄 FERP : ERP For Franchase</a></p>
+		<p class="block-color-default link-to-page"><a href="https://github.com/SeyoungKim30/SY_Board">🥠개인프로젝트 게시판</a></p>
+	</div>
+
 	<div class="column-list">
 		<div style="width:50%;" class="column orangerange"><h3 class="block-color-yellow_background">📜 TIMELINE</h3>
-			<div style="text-align: center;"><input id="mytimeline" type="range" min="16" max="26" value="23" style="width:90%;"><br><label for="mytimeline">범위를 조절해보세요!</label></div>
 			<ul class="bulleted-list wideli">
 				<li style="list-style-type:disc"><mark class="highlight-gray">2022.08.29 ~ 2023.03.22 @ 쌍용강북교육센터</mark>
-					<br>AWS 클라우드를 활용한 Full-Stack 개발자 양성과정
+					<br><b>AWS 클라우드를 활용한 Full-Stack 개발자 양성과정</b>
 					<div class="canbehidden">Java 기반 풀스택 프로그래밍 과정 이수<br><a href="https://cerulean-plastic-e02.notion.site/234400b2c8ab4c969e257973b40cfe71">🔗 What I've learned</a></div>
 				</li>
 				<li style="list-style-type:disc">
 					<mark class="highlight-gray">2018.11~2022.04</mark>
-					<br>재무회계 업무
+					<br><b>재무회계 업무</b>
 					<div class="canbehidden">자금관리, 세무 신고, 손익계산서 작성 등의 재무회계 업무와 인사업무 일부를 수행했습니다. Forwarding 기업용 ERP를 사용했습니다.</div>
 				</li>
 				<li style="list-style-type:disc">
 					<mark class="highlight-gray">2018.09~2018.10</mark>
-					<br>전산세무회계자격증취득과정
+					<br><b>전산세무회계자격증취득과정</b>
 					<div class="canbehidden">회계 관련 DB마스터 관리, 회계프로그램 운용, 회계정보를 활용하는 능력을 함양</div>
 				</li>
 				<li style="list-style-type:disc">
 					<mark class="highlight-gray">2016.03~2018.09 @삼육대학교</mark>
-					<br>경영학 학사 학위 취득
+					<br><b>경영학 학사 학위 취득</b>
 				</li>
 			</ul>
 		</div>
@@ -68,69 +85,10 @@
 			</ul>
 		</div>
 	</div>
-	<h3 class="block-color-yellow_background">💖 PROJECT</h3>
-	<p class="block-color-default link-to-page"><a href="ferp.html">🔄 FERP : ERP For Franchase</a></p>
-	<p class="block-color-default link-to-page"><a href="https://github.com/SeyoungKim30/SY_Board">🥠개인프로젝트 게시판</a></p>
+
 	</div>
 </main>
 </body>
-<script>
-	var mytimeline=document.querySelector("#mytimeline")
-	const yearli = document.querySelectorAll(".wideli li");
-	const canbehidden = document.querySelectorAll(".canbehidden");
-
-	mytimeline.addEventListener("input",function(){
-		let mytimelinevalue=mytimeline.value
-		fillOrange(mytimelinevalue);
-		yearli.forEach(function(each){
-			each.style.background="transparent";
-			each.style.fontWeight="normal";
-		})
-		canbehidden.forEach(function(each){
-			each.style.display="none";
-		})
-
-		if(mytimelinevalue<19){
-			yearli[3].style.background="#fff8e3";
-			yearli[3].style.fontWeight="bold";
-		}else if(mytimelinevalue<20){
-			yearli[2].style.background="#fff8e3";
-			yearli[2].style.fontWeight="bold";
-			canbehidden[2].style.display="block";
-			canbehidden[2].style.fontWeight="normal";
-		}else if(mytimelinevalue<23){
-			yearli[1].style.background="#fff8e3";
-			yearli[1].style.fontWeight="bold";
-			canbehidden[1].style.display="block";
-			canbehidden[1].style.fontWeight="normal";
-		}else{
-			yearli[0].style.background="#fff8e3";
-			yearli[0].style.fontWeight="bold";
-			canbehidden[0].style.display="block";
-			canbehidden[0].style.fontWeight="normal";
-		}
-	})
-
-function fillOrange(timeyearvalue){
-	let gradient_value=(timeyearvalue-16)/10*100;
-	switch(gradient_value){
-		case 10: gradient_value = 11; break;
-		case 20: gradient_value = 21; break;
-		case 90 : gradient_value = 88; break;
-	}
-	mytimeline.style.background = 'linear-gradient(to right, #fede7c 0%, #fede7c '+gradient_value +'%, #989898 ' +gradient_value+ '%,#989898 100%)';
-}
-
-window.addEventListener("load", (event) => {
-	canbehidden.forEach(function(each){
-			each.style.display="none";
-		})
-	yearli[0].style.background="#fff8e3";
-	yearli[0].style.fontWeight="bold";
-	canbehidden[0].style.display="block";
-	canbehidden[0].style.fontWeight="normal";
-});
-</script>
 
 <script>
 	twemoji.parse(document.body)

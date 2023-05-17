@@ -63,4 +63,9 @@ li{padding-bottom: 0.2em;}
     vertical-align: -0.1em;
  }
 
- 
+ h4{
+    margin-bottom: 0.2rem;
+ }
+ .page-body{
+    margin-bottom: 5rem;
+ }
